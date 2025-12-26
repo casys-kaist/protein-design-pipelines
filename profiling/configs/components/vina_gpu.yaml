@@ -1,0 +1,59 @@
+_target_: profile.components.common.ComponentSpec
+name: vina_gpu
+templates:
+  CMD:
+    - python3
+    - /workspace/profiling/src/profile/components/run_vina_gpu_batch.py
+  PARAMS:
+    - --binary
+    - /vina/AutoDock-Vina-GPU-2.1/AutoDock-Vina-GPU-2-1
+    - --opencl_binary_path
+    - /vina/AutoDock-Vina-GPU-2.1
+    - --receptor
+    - "{receptor_path}"
+    - --ligand
+    - "{ligand_pdbqt_path}"
+    - --out
+    - ${paths.outputs.vina_gpu}/output/vina_gpu_output.pdbqt
+    - --center_x
+    - "{x}"
+    - --center_y
+    - "{y}"
+    - --center_z
+    - "{z}"
+    - --size_x
+    - "25"
+    - --size_y
+    - "25"
+    - --size_z
+    - "25"
+    - --thread
+    - "{thread}"
+    - --batch_size
+    - "{batch_size}"
+  PROF_DIR: ${component_raw_root:vina_gpu}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:vina_gpu}/{sample_id}/{quality}
+  BASENAME: vina_gpu_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.vina_gpu}/output
+    - mkdir -p ${paths.outputs.vina_gpu}/output
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.vina_gpu.build_apply_rules
+run_gpu: true
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: autodock_vina_gpu
+  tag: profiling
+  name_prefix: vina-gpu-profile
+  runner_entry:
+    - python3
+    - -m
+    - profile.cli.run_single_run

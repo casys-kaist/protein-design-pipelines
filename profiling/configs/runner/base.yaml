@@ -1,0 +1,77 @@
+_target_: profile.cli.run_sweeps.ProfilingRunner
+components: []
+profile_duration: 30
+mode: full
+config_cache_dir: ${repo_root}/.hydra_cache
+smoke:
+  _target_: profile.cli.run_sweeps.SmokeConfig
+  timeout_sec: 5
+  max_concurrency: 1
+  report_dir: ${oc.env:PROFILE_STORAGE_ROOT,/mnt/nfs/new/bioinformatics/profile}/results/smoke
+  count_timeout_as_success: true
+run_config:
+  _target_: profile.cli.run_sweeps.RunExecutionConfig
+  mps_enabled: false
+  concurrency: 1  # fixed for CAL; override via CLI if needed
+  gpu_ids: null
+  timeout_sec: null  # per-run hard timeout in seconds (null/0 disables)
+  env:
+    TORCH_HOME: /mnt/nfs/new/bioinformatics/cache/torch
+    HF_HOME: /mnt/nfs/new/bioinformatics/cache/hf
+    TRANSFORMERS_CACHE: /mnt/nfs/new/bioinformatics/cache/hf
+    TRITON_CACHE_DIR: /mnt/ssd/torch_extensions_cache
+    TORCH_EXTENSIONS_DIR: /mnt/ssd/torch_extensions_cache
+wandb:
+  _target_: profile.cli.run_sweeps.WandbConfig
+  enabled: false
+  project: profiling
+  entity: null
+  tags: []
+  mode: online
+features: []
+filters:
+  _target_: profile.cli.run_sweeps.FilterConfig
+  scaffolds: []
+  ligands: []
+  qualities: []
+  contigs: []
+repeats: 1
+default_exec_helper: docker/autodock_vina_gpu/exec.sh
+container_runtime:
+  _target_: profile.cli.run_sweeps.ContainerRuntimeOptions
+  mounts:
+    - '${repo_root}:/workspace'
+    - /mnt/nfs/new:/mnt/nfs/new
+    - /mnt/ssd:/mnt/ssd
+    - /mnt/ssd1:/mnt/ssd1
+    - /mnt/ssd2:/mnt/ssd2
+    - /mnt/ssd3:/mnt/ssd3
+    - /mnt/ssd4:/mnt/ssd4
+    - /mnt/hdd1:/mnt/hdd1
+    - /mnt/hdd2:/mnt/hdd2
+  extra_args:
+    - --net=host
+    - --ulimit=core=-1
+    - --privileged
+    - --security-opt=seccomp=unconfined
+    - --cap-add=SYS_PTRACE
+    - --shm-size=110gb
+  env:
+    - TORCH_HOME=/mnt/nfs/new/bioinformatics/cache/torch
+    - HF_HOME=/mnt/nfs/new/bioinformatics/cache/hf
+    - TRANSFORMERS_CACHE=/mnt/nfs/new/bioinformatics/cache/hf
+    - TRITON_CACHE_DIR=/mnt/ssd/torch_extensions_cache
+    - TORCH_EXTENSIONS_DIR=/mnt/ssd/torch_extensions_cache
+  runner_entry:
+    - python3
+    - -m
+    - profile.cli.run_single_run
+container_workdir: /workspace
+skip_existing: true
+dry_run: false
+list_runs: false
+ignore_nsight: false
+continue_on_error: true
+timestamp: null
+show_components: false
+notifier: ${notifier}

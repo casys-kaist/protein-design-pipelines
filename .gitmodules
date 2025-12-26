@@ -1,0 +1,25 @@
+[submodule "third_parties/Protenix"]
+	path = third_parties/Protenix
+	url = https://github.com/jinuhwang/Protenix.git
+[submodule "third_parties/DiffDock"]
+	path = third_parties/DiffDock
+	url = https://github.com/jinuhwang/DiffDock.git
+	branch = main
+[submodule "third_parties/RFdiffusion"]
+	path = third_parties/RFdiffusion
+	url = https://github.com/jinuhwang/RFdiffusion.git
+	branch = main
+[submodule "third_parties/ProteinMPNN"]
+	path = third_parties/ProteinMPNN
+	url = https://github.com/jinuhwang/ProteinMPNN.git
+	branch = main
+[submodule "third_parties/vina_cpu"]
+	path = third_parties/vina_cpu
+	url = https://github.com/ccsb-scripps/AutoDock-Vina.git
+[submodule "third_parties/alphafold3"]
+	path = third_parties/alphafold3
+	url = https://github.com/jinuhwang/alphafold3
+[submodule "third_parties/Colabfold"]
+	path = third_parties/Colabfold
+	url = https://github.com/jinuhwang/Colabfold.git
+	branch = main

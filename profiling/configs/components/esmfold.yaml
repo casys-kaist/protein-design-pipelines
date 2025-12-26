@@ -1,0 +1,45 @@
+_target_: profile.components.common.ComponentSpec
+name: esmfold
+max_workers: 3
+templates:
+  CMD:
+    - esm-fold
+  PARAMS:
+    - -i
+    - "{batched_fasta}"
+    - -o
+    - ${paths.outputs.esmfold}/output
+    - -m
+    - ${paths.inputs.esmfold_params}
+    - --num-recycles
+    - "{recycle}"
+    - --max-tokens-per-batch
+    - "{max_tokens_per_batch}"
+  PROF_DIR: ${component_raw_root:esmfold}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:esmfold}/{sample_id}/{quality}
+  BASENAME: esmfold_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.esmfold}/output
+    - rm -rf ${paths.outputs.esmfold}/inputs
+    - mkdir -p ${paths.outputs.esmfold}/output
+    - mkdir -p ${paths.outputs.esmfold}/inputs
+    - >
+      python ${oc.env:PROFILE_REPO_ROOT,/workspace}/profiling/src/profile/components/prep_mmseqs_batch.py
+      --input-fasta {input_fasta}
+      --output-fasta {batched_fasta}
+      --count {batch_size}
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.esmfold.build_apply_rules
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: esmfold
+  tag: profiling
+  name_prefix: esmfold-profile

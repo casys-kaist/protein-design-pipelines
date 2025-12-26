@@ -1,0 +1,56 @@
+_target_: profile.components.common.ComponentSpec
+name: vina_cpu
+templates:
+  CMD:
+    - micromamba
+    - run
+    - -n
+    - base
+    - python
+    - /workspace/autodock-cpu/inference.py
+  PARAMS:
+    - --input_pdbqt_path
+    - "{receptor_path}"
+    - --ligand_pdbqt_path
+    - "{ligand_pdbqt_path}"
+    - --output_dir
+    - ${paths.outputs.vina_cpu}/output
+    - --center_x
+    - "{x}"
+    - --center_y
+    - "{y}"
+    - --center_z
+    - "{z}"
+    - --exhaustiveness
+    - "{exhaustiveness}"
+  PROF_DIR: ${component_raw_root:vina_cpu}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:vina_cpu}/{sample_id}/{quality}
+  BASENAME: vina_cpu_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.vina_cpu}
+    - mkdir -p ${paths.outputs.vina_cpu}/output
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.vina_cpu.build_apply_rules
+run_gpu: false
+gpu_profile_path: null
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: autodock_vina_cpu
+  tag: profiling
+  name_prefix: vina-cpu-profile
+  runner_entry:
+    - micromamba
+    - run
+    - -n
+    - base
+    - python
+    - -m
+    - profile.cli.run_single_run

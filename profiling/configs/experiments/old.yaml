@@ -1,0 +1,60 @@
+experiments:
+  rfdiffusion:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  diffdock:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  vina_cpu:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  vina_gpu:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  proteinmpnn:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  esm:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  esmfold:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  protenix:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  alphafold3:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  mmseqs2:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [medium, high]
+    input_batch_size: [1]
+    output_samples: [1]

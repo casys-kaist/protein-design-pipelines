@@ -1,0 +1,42 @@
+_target_: profile.components.common.ComponentSpec
+name: proteinmpnn
+templates:
+  CMD:
+    - bash
+    - /workspace/third_parties/ProteinMPNN/examples/run_single_pdb.sh
+  PARAMS:
+    - -p
+    - "{protein_path}"
+    - -o
+    - ${paths.outputs.proteinmpnn}/output/proteinmpnn_out
+    - -n
+    - "{num_seq_per_target}"
+    - -b
+    - "{batch_size}"
+    - -t
+    - "0.15"
+  PROF_DIR: ${component_raw_root:proteinmpnn}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:proteinmpnn}/{sample_id}/{quality}
+  BASENAME: proteinmpnn_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.proteinmpnn}
+    - mkdir -p ${paths.outputs.proteinmpnn}/output
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.proteinmpnn.build_apply_rules
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+  output:
+    _target_: profile.components.batching.BatchDimension
+    key: num_seq_per_target
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: proteinmpnn
+  tag: profiling
+  name_prefix: proteinmpnn-profile

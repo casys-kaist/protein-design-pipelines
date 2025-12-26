@@ -1,0 +1,20 @@
+inputs:
+  msa: "{data_root}/sample_inputs"
+  denovo: "{input_root}/denovo"
+  casf_coreset: "{data_root}/casf/CASF-2016/coreset"
+  handpicked_ligands_mol2: "{data_root}/handpicked/ligands/mol2"
+  rfdiffusion_models: "{data_root}/rfdiffusion/models"
+  colabfold_db: "/mnt/ssd/colabfold_db"
+  esmfold_params: "{data_root}/esmfold/params"
+
+outputs:
+  diffdock: "{output_root}/diffdock"
+  esm: "{output_root}/esm"
+  esmfold: "{output_root}/esmfold"
+  mmseqs2: "{output_root}/mmseqs2"
+  proteinmpnn: "{output_root}/proteinmpnn"
+  protenix: "{output_root}/protenix"
+  alphafold3: "{output_root}/alphafold3"
+  rfdiffusion: "{output_root}/rfdiffusion"
+  vina_cpu: "{output_root}/vina_cpu"
+  vina_gpu: "{output_root}/vina_gpu"

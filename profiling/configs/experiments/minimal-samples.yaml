@@ -1,0 +1,36 @@
+experiments:
+  rfdiffusion:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+
+  diffdock:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+
+  proteinmpnn:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+
+  esm:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+
+  protenix:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+
+  alphafold3:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]

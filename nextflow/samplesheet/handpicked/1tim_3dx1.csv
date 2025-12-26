@@ -1,0 +1,3 @@
+sequence,ligand_sdf,ligand_pdbqt,docked_pdb,ligand_mol2,contigs
+1tim_3dx1,/mnt/nfs/new/bioinformatics/handpicked/ligands/sdf/3dx1.sdf,/mnt/nfs/new/bioinformatics/handpicked/ligands/pdbqt/3dx1.pdbqt,/mnt/nfs/new/bioinformatics/handpicked/docked/1tim_3dx1.pdb,/mnt/nfs/new/bioinformatics/handpicked/ligands/mol2/3dx1.mol2,[5-10/A4-15/6-12/A16-28/6-12/A29-43/6-12/A44-58/6-12/A59-73/6-12/A74-88/6-12/A89-103/6-12/A104-118/6-12/A119-133/6-12/A134-148/6-12/A149-163/6-12/A164-178/6-12/A179-193/6-12/A194-208/6-12/A209-223/6-12/A224-238/5-10]
+

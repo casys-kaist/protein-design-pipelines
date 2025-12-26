@@ -1,0 +1,46 @@
+_target_: profile.components.common.ComponentSpec
+name: esm
+templates:
+  CMD:
+    - python
+    - /workspace/esm/generate_variants.py
+  PARAMS:
+    - --ref_fasta_file
+    - "{ref_fasta}"
+    - --output_dir
+    - ${paths.outputs.esm}/output
+    - --batch_size
+    - "{batch_size}"
+    - --num_variants
+    - "{num_variants}"
+    - --max_mutations
+    - "1"
+    - --top_k
+    - "5"
+    - --model_name
+    - "{model}"
+  PROF_DIR: ${component_raw_root:esm}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:esm}/{sample_id}/{quality}
+  BASENAME: esm_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.esm}/output
+    - mkdir -p ${paths.outputs.esm}/output
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.esm.build_apply_rules
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+  output:
+    _target_: profile.components.batching.BatchDimension
+    key: num_variants
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: protenix
+  tag: profiling
+  name_prefix: esm-profile

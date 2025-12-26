@@ -1,0 +1,3 @@
+sequence,ligand_sdf,ligand_pdbqt,docked_pdb,ligand_mol2,contigs
+1shg_3prs,/mnt/nfs/new/bioinformatics/handpicked/ligands/sdf/3prs.sdf,/mnt/nfs/new/bioinformatics/handpicked/ligands/pdbqt/3prs.pdbqt,/mnt/nfs/new/bioinformatics/handpicked/docked/1shg_3prs.pdb,/mnt/nfs/new/bioinformatics/handpicked/ligands/mol2/3prs.mol2,[5-10/A8-11/3-6/A17-21/4-7/A29-33/4-6/A41-45/3-5/A50-54/5-10]
+

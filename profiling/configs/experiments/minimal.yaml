@@ -1,0 +1,60 @@
+experiments:
+  rfdiffusion:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  diffdock:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  vina_cpu:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  vina_gpu:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  proteinmpnn:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  esm:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  esmfold:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  protenix:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  alphafold3:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]
+
+  mmseqs2:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1]
+    output_samples: [1]

@@ -1,0 +1,68 @@
+# Component color palette shared across plotting utilities.
+# tab20
+rfdiffusion: "#1F77B4"
+proteinmpnn: "#AEC7E8"
+esm-2: "#FF7F0E"
+mmseqs2: "#FFBB78"
+protenix: "#2CA02C"
+alphafold3: "#C5B0D5"
+esmfold: "#98DF8A"
+diffdock: "#D62728"
+vina-gpu: "#F9DD64"
+vina-cpu: "#9467BD"
+
+# # ocean sunset
+# # 9b2226 / ae2012 / bb3e03 / ca6702 / ee9b00 / e9d8a6 / 94d2bd / 0a9396 / 005f73 / (001219)
+# rfdiffusion: "#9b2226"
+# proteinmpnn: "#ae2012"
+# esm-2: "#bb3e03"
+# mmseqs2: "#ca6702"
+# protenix: "#ee9b00"
+# esmfold: "#e9d8a6"
+# diffdock: "#94d2bd"
+# vina-gpu: "#0a9396"
+# vina-cpu: "#005f73"
+
+# # 542657-373d81-4b9baf-6bbf92-9be58a-c3ae46-d4f8b4-f0f278-d7966a
+# rfdiffusion: "#542657"
+# proteinmpnn: "#373d81"
+# esm-2: "#4b9baf"
+# mmseqs2: "#6bbf92"
+# protenix: "#9be58a"
+# esmfold: "#c3ae46"
+# diffdock: "#d4f8b4"
+# vina-gpu: "#f0f278"
+# vina-cpu: "#d7966a"
+# 
+# # ffc757-ffa07a-ff7a9c-d26f98-a366a8-516ba4-8293c0-b2bad7-e5e8f0
+# rfdiffusion: "#ffc757"
+# proteinmpnn: "#ffa07a"
+# esm-2: "#ff7a9c"
+# mmseqs2: "#d26f98"
+# protenix: "#a366a8"
+# esmfold: "#516ba4"
+# diffdock: "#8293c0"
+# vina-gpu: "#b2bad7"
+# vina-cpu: "#e5e8f0"
+# 
+# # ffc757-ff8c8a-d96997-ad5ab5-745bb4-4567b0-788ec9-acb6dd-e3e7f2
+# rfdiffusion: "#ffc757"
+# proteinmpnn: "#ff8c8a"
+# esm-2: "#d96997"
+# mmseqs2: "#ad5ab5"
+# protenix: "#745bb4"
+# esmfold: "#4567b0"
+# diffdock: "#788ec9"
+# vina-gpu: "#acb6dd"
+# vina-cpu: "#e3e7f2"
+# 
+# # ffd012-ff583b-cc3560-944390-654494-37468c-4958b8-757bc7-a5acd6
+# rfdiffusion: "#ffd012"
+# proteinmpnn: "#ff583b"
+# esm-2: "#cc3560"
+# mmseqs2: "#944390"
+# protenix: "#654494"
+# esmfold: "#37468c"
+# diffdock: "#4958b8"
+# vina-gpu: "#757bc7"
+# vina-cpu: "#a5acd6"

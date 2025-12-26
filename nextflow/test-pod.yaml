@@ -1,0 +1,39 @@
+# # test-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nextflow-debug-pod-jwhwang # 이름 변경 (기존 Pod와 충돌 방지)
+  namespace: nextflow
+  # ... labels는 그대로 두거나 삭제해도 무방 ...
+spec:
+  restartPolicy: Never
+  containers:
+  - name: nextflow-debug-container
+    image: protenix:latest
+    command: ["/bin/bash", "-c"]
+    args: ["sleep infinity"]
+    imagePullPolicy: IfNotPresent
+    env:
+    - {name: NXF_DEBUG, value: '1'}
+    resources:
+      requests: {aliyun.com/gpu-mem: 4}
+      limits: {aliyun.com/gpu-mem: 4}
+    volumeMounts:
+    # ... volumeMounts는 그대로 유지 ...
+    - {name: vol-1, mountPath: /mnt/nfs/new}
+    - {name: vol-2, mountPath: /workspace}
+    - {name: vol-28, mountPath: /home/jwhwang/workspace/bioinformatics.code/nextflow/work}
+    - {name: vol-3, mountPath: /mnt/nfs/new/bioinformatics/esmfold/params}
+    - {name: vol-4, mountPath: /mnt/ssd4}
+  serviceAccountName: nextflow
+  volumes:
+  - name: vol-1
+    hostPath: {path: /mnt/nfs/new}
+  - name: vol-2
+    hostPath: {path: /home/jwhwang/workspace/bioinformatics.code}
+  - name: vol-28
+    hostPath: {path: /home/jwhwang/workspace/bioinformatics.code/nextflow/work}
+  - name: vol-3
+    hostPath: {path: /mnt/nfs/new/bioinformatics/esmfold/params}
+  - name: vol-4
+    hostPath: {path: /mnt/ssd4}

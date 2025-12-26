@@ -1,0 +1,8 @@
+Index,Time (%),Name
+1,30.66,ampere_sgemm_128x32_tn
+2,27.38,ampere_sgemm_64x32_sliced1x4_tn
+3,21.32,ampere_sgemm_128x64_tn
+4,5.28,vectorized_elementwise_kernel
+5,4.99,elementwise_kernel
+6,3.55,ampere_sgemm_128x128_nn
+7,2.19,ampere_sgemm_128x128_tn

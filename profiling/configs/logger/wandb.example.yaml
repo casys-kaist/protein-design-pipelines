@@ -1,0 +1,13 @@
+# @package _global_
+# Copy to profiling/configs/logger/wandb.yaml (gitignored) to enable W&B logging.
+# Values can be overridden via environment variables or Hydra overrides.
+runner:
+  wandb:
+    enabled: true
+    project: ${oc.env:WANDB_PROJECT,profiling}
+    entity: ${oc.env:WANDB_ENTITY,null}
+    mode: ${oc.env:WANDB_MODE,online}
+    tags: []
+    features: []
+  # Optional: set runner-wide feature labels applied to all runs.
+  # features: [feature_a, feature_b]

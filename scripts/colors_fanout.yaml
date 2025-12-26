@@ -1,0 +1,7 @@
+# Color palette specific to fan-out plots.
+rfdiffusion: "#542657"
+proteinmpnn: "#373D81"
+esm-2: "#4B9BAF"
+mmseqs2: "#6BBF92"
+protenix: "#9BE58A"
+vina_gpu: "#F0F278"

@@ -1,0 +1,50 @@
+_target_: profile.components.common.ComponentSpec
+name: alphafold3
+templates:
+  CMD:
+    - python
+    - /workspace/third_parties/alphafold3/run_alphafold.py
+    - --input_dir=${paths.outputs.alphafold3}/inputs
+    - --output_dir=${paths.outputs.alphafold3}/results
+    - --model_dir=/mnt/ssd4/af3_model
+    - --norun_data_pipeline
+    - --num_diffusion_steps={num_diffusion_steps}
+    - --num_recycles={num_recycles}
+    - --num_diffusion_samples={num_diffusion_samples}
+    - --jax_compilation_cache_dir=/mnt/ssd4/af3_model/jax
+  PARAMS: []
+  PROF_DIR: ${component_raw_root:alphafold3}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:alphafold3}/{sample_id}/{quality}
+  BASENAME: alphafold3_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.alphafold3}
+    - mkdir -p ${paths.outputs.alphafold3}/inputs
+    - mkdir -p ${paths.outputs.alphafold3}/results
+    - >
+      python /workspace/scripts/generate_alphafold3_input.py
+      {msa_path}
+      -f {input_fasta}
+      -o ${paths.outputs.alphafold3}/inputs
+      -n {num_diffusion_samples}
+      --count {batch_size}
+      --name-prefix {sample_id}
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.alphafold3.build_apply_rules
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+  output:
+    _target_: profile.components.batching.BatchDimension
+    key: num_diffusion_samples
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: alphafold3
+  tag: profiling
+  env:
+    - XLA_PYTHON_CLIENT_PREALLOCATE=false

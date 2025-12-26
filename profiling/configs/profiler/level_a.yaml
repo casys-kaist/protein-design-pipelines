@@ -1,0 +1,6 @@
+_target_: profile.profilers.strategies.LevelATelemetryStrategy
+name: level_a_telemetry
+requires_nsight: false
+sampling_interval: 0.5
+gpu_query: index,name,utilization.gpu,utilization.memory,memory.total,memory.used
+output_filename: ${runner.run_id}_telemetry.csv

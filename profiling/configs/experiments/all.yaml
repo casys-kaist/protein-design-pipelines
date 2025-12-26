@@ -1,0 +1,40 @@
+experiments:
+  rfdiffusion:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+
+  diffdock:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+
+  vina_cpu:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+
+  vina_gpu:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [medium]
+
+  proteinmpnn:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [medium]
+
+  esm:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+
+  esmfold:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+
+  protenix:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+
+  alphafold3:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [low, medium, high]
+
+  mmseqs2:
+    sample_id: [1shg_3dx1, 1shg_4de1, 1shg_3prs, 1n0r_3dx1, 1n0r_4de1, 1n0r_3prs, 1tim_3dx1, 1tim_4de1, 1tim_3prs]
+    quality: [medium, high]

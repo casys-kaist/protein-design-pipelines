@@ -1,0 +1,10 @@
+pdb-tools
+hydra-core
+docker
+pytest
+pytest-mock
+pyfoldx
+PyYAML
+matplotlib
+seaborn
+wandb

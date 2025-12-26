@@ -1,0 +1,53 @@
+_target_: profile.components.common.ComponentSpec
+name: protenix
+templates:
+  CMD:
+    - /workspace/third_parties/Protenix/inference.sh
+  PARAMS:
+    - --input_json_path
+    - ${paths.outputs.protenix}/inputs/protenix_input.json
+    - --dump_dir
+    - ${paths.outputs.protenix}/results
+    - --seed
+    - "101"
+    - --N_sample
+    - "{num_samples}"
+    - --N_step
+    - "{step}"
+    - --N_cycle
+    - "{cycle}"
+  PROF_DIR: ${component_raw_root:protenix}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:protenix}/{sample_id}/{quality}
+  BASENAME: protenix_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.protenix}
+    - mkdir -p ${paths.outputs.protenix}/inputs
+    - mkdir -p ${paths.outputs.protenix}/results
+    - >
+      python /workspace/scripts/generate_protenix_input.py
+      {msa_path}
+      -f {fasta_path}
+      -o ${paths.outputs.protenix}/inputs
+      -c {batch_size}
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.protenix.build_apply_rules
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+  output:
+    _target_: profile.components.batching.BatchDimension
+    key: num_samples
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: protenix
+  tag: profiling
+  name_prefix: protenix-profile
+  workdir: /workspace/third_parties/Protenix
+  env:
+    - PYTHONPATH=/workspace/src:/workspace/profiling/src:/workspace/third_parties/Protenix/src:/workspace/third_parties/Protenix/profiling/src

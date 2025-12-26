@@ -1,0 +1,2 @@
+_target_: profile.cli.notifier.SlackNotifier
+webhook_url: ${secret:slack.webhook_url,""}

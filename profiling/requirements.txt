@@ -1,0 +1,14 @@
+# --------- hydra --------- #
+hydra-core==1.3.2
+hydra-colorlog==1.2.0
+omegaconf>=2.3.0
+
+# --------- profiling helpers --------- #
+psutil>=5.9
+pynvml>=11.4.1
+tqdm>=4.65.0
+pyyaml>=6.0
+
+# --------- dev / tooling --------- #
+pytest>=8.0
+pre-commit>=3.0

@@ -1,0 +1,24 @@
+runner:
+  _target_: profile.cli.run_sweeps.ProfilingRunner
+  components:
+  - rfdiffusion
+  filters:
+    _target_: profile.cli.run_sweeps.FilterConfig
+    scaffolds:
+    - 1n0r
+    ligands:
+    - 3prs
+    qualities:
+    - low
+  stages:
+    _target_: profile.cli.run_sweeps.StageConfig
+    system: true
+    gpu: true
+  repeats: 3
+  skip_existing: false
+  dry_run: false
+  list_runs: false
+  ignore_nsight: false
+  timestamp: '20251114_183628'
+  show_components: false
+  notifier: null

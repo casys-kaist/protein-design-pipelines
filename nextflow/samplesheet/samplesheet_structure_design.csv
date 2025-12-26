@@ -1,0 +1,11 @@
+sample_id,pdb_file,contigs
+1shg_3dx1,/mnt/nfs/new/bioinformatics/docked/processed/1shg_3dx1.pdb,[5-10/A8-11/3-6/A17-21/4-7/A29-33/4-6/A41-45/3-5/A50-54/5-10]
+1shg_4de1,/mnt/nfs/new/bioinformatics/docked/processed/1shg_4de1.pdb,[5-10/A8-11/3-6/A17-21/4-7/A29-33/4-6/A41-45/3-5/A50-54/5-10]
+1shg_3prs,/mnt/nfs/new/bioinformatics/docked/processed/1shg_3prs.pdb,[5-10/A8-11/3-6/A17-21/4-7/A29-33/4-6/A41-45/3-5/A50-54/5-10]
+1n0r_3dx1,/mnt/nfs/new/bioinformatics/docked/processed/1n0r_3dx1.pdb,[5-10/A1-33/32-34/A34-66/32-34/A67-99/5-10]
+1n0r_4de1,/mnt/nfs/new/bioinformatics/docked/processed/1n0r_4de1.pdb,[5-10/A1-33/32-34/A34-66/32-34/A67-99/5-10]
+1n0r_3prs,/mnt/nfs/new/bioinformatics/docked/processed/1n0r_3prs.pdb,[5-10/A1-33/32-34/A34-66/32-34/A67-99/5-10]
+1tim_3dx1,/mnt/nfs/new/bioinformatics/docked/processed/1tim_3dx1.pdb,[5-10/A4-15/6-12/A16-28/6-12/A29-43/6-12/A44-58/6-12/A59-73/6-12/A74-88/6-12/A89-103/6-12/A104-118/6-12/A119-133/6-12/A134-148/6-12/A149-163/6-12/A164-178/6-12/A179-193/6-12/A194-208/6-12/A209-223/6-12/A224-238/5-10]
+1tim_4de1,/mnt/nfs/new/bioinformatics/docked/processed/1tim_4de1.pdb,[5-10/A4-15/6-12/A16-28/6-12/A29-43/6-12/A44-58/6-12/A59-73/6-12/A74-88/6-12/A89-103/6-12/A104-118/6-12/A119-133/6-12/A134-148/6-12/A149-163/6-12/A164-178/6-12/A179-193/6-12/A194-208/6-12/A209-223/6-12/A224-238/5-10]
+1tim_3prs,/mnt/nfs/new/bioinformatics/docked/processed/1tim_3prs.pdb,[5-10/A4-15/6-12/A16-28/6-12/A29-43/6-12/A44-58/6-12/A59-73/6-12/A74-88/6-12/A89-103/6-12/A104-118/6-12/A119-133/6-12/A134-148/6-12/A149-163/6-12/A164-178/6-12/A179-193/6-12/A194-208/6-12/A209-223/6-12/A224-238/5-10]
+

@@ -1,0 +1,34 @@
+_target_: profile.profilers.strategies.NcuProfilerStrategy
+name: level_c_ncu
+requires_nsight: true
+output_filename: ${runner.run_id}.ncu-rep
+metrics:
+  - sm__throughput.avg.pct_of_peak_sustained_elapsed
+  - dram__throughput.avg.pct_of_peak_sustained_elapsed
+  - sm__warps_active.avg.pct_of_peak_sustained_active
+  - sm__maximum_warps_per_active_cycle_pct
+  - dram__bytes_read.sum
+  - dram__bytes_write.sum
+  - l1tex__t_sector_hit_rate.pct
+  - lts__t_sector_hit_rate.pct
+  - sm__inst_executed.sum
+  - sm__inst_executed_pipe_fp32.avg.pct_of_peak_sustained_active
+  - sm__inst_executed_pipe_tensor.avg.pct_of_peak_sustained_active
+  - smsp__warp_issue_stalled_memory_dependency_per_warp_active.pct
+  - smsp__warp_issue_stalled_short_scoreboard_per_warp_active.pct
+kernel_regex: "regex:^void (alphafold|diffusion).*"
+target_sections:
+  # scripts/plot_microbench.py consumes "Achieved Occupancy" from the NCU summary CSV.
+  # Keep the minimal section set required for that metric.
+  - Occupancy
+  # - SpeedOfLight
+  # - LaunchStats
+  # - MemoryWorkloadAnalysis
+  # - SchedulerStats
+params:
+  - --launch-skip
+  - 3
+  - --launch-count
+  - 3
+  - --target-processes
+  - all

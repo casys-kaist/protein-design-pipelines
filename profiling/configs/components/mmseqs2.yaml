@@ -1,0 +1,59 @@
+_target_: profile.components.common.ComponentSpec
+name: mmseqs2
+templates:
+  CMD:
+    - /opt/conda/bin/python
+    - -m
+    - colabfold.mmseqs.search
+  PARAMS:
+    - ${paths.outputs.mmseqs2}/input/{sample_id}_{quality}_bs{batch_size}.fasta
+    - ${paths.inputs.colabfold_db}
+    - ${paths.outputs.mmseqs2}/output
+    - --db1
+    - uniref30_2302_db
+    - --num-iterations
+    - "{iter}"
+    - --db-load-mode
+    - "2"
+    - --prefilter-mode
+    - "1"
+    - --gpu
+    - "1"
+    - --use-env
+    - "0"
+  PROF_DIR: ${component_raw_root:mmseqs2}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:mmseqs2}/{sample_id}/{quality}
+  BASENAME: mmseqs2_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.mmseqs2}/output
+    - rm -rf ${paths.outputs.mmseqs2}/input
+    - mkdir -p ${paths.outputs.mmseqs2}/output
+    - mkdir -p ${paths.outputs.mmseqs2}/input
+    - >
+      /opt/conda/bin/python ${oc.env:PROFILE_REPO_ROOT,/workspace}/profiling/src/profile/components/prep_mmseqs_batch.py
+      --source {input_fasta}
+      --dest ${paths.outputs.mmseqs2}/input/{sample_id}_{quality}_bs{batch_size}.fasta
+      --count {batch_size}
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.mmseqs2.build_apply_rules
+exec_helper: docker/colabfold/exec.sh
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: colabfold
+  tag: profiling
+  name_prefix: mmseqs2-profile
+  env:
+    - CUDA_VISIBLE_DEVICES=0
+    - PYTHONPATH=/workspace/third_parties/Colabfold:/workspace/src:/workspace/profiling/src:$PYTHONPATH
+  runner_entry:
+    - /opt/conda/bin/python
+    - -m
+    - profile.cli.run_single_run

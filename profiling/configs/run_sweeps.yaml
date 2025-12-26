@@ -1,0 +1,20 @@
+defaults:
+  - runner: base
+  - paths: defaults
+  - experiments: all
+  - profiler: level_a
+  - notifier: slack
+  - optional logger: wandb  # optional; loads profiling/configs/logger/wandb.yaml automatically if present
+  - _self_
+
+# Resolve to project root even when invoked from profiling/ (fallback to cwd/..).
+repo_root: ${oc.env:PROFILE_REPO_ROOT,${hydra:runtime.cwd}}
+
+hydra:
+  run:
+    dir: .
+  sweep:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

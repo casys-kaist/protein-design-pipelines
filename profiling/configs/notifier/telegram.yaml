@@ -1,0 +1,3 @@
+_target_: profile.cli.notifier.TelegramNotifier
+bot_token: ${secret:telegram.bot_token,""}
+chat_id: ${secret:telegram.chat_id,""}

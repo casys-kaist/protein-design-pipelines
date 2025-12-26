@@ -1,0 +1,11 @@
+.nextflow/
+.nextflow.log*
+
+results/
+out/
+work/
+null/
+
+*.snap
+tmp_stub/
+.nextflow.pid

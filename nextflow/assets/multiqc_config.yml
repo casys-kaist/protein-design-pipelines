@@ -1,0 +1,16 @@
+report_comment: >
+  This report summarizes a protein design pipeline run.
+report_section_order:
+  software_versions:
+    order: -1001
+  "bioinformatics.code-cal-summary":
+    order: -1002
+
+export_plots: true
+
+# Run only these modules
+run_modules:
+  - custom_content
+  - colabfold_batch
+
+disable_version_detection: true

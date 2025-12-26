@@ -1,0 +1,59 @@
+experiments:
+  # NOTE: RFDiffusion's implementation does not support batch inference at all.
+  # rfdiffusion:
+  # sample_id: [1n0r_4de1]
+  # quality: [medium]
+  # input_batch_size: [4, 16]
+  # output_samples: [1]
+
+  # NOTE: DiffDock's implementation processes inputs sequentially.
+  diffdock:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+    output_samples: [1]
+
+  # NOTE: Vina's GPU implementation processes inputs sequentially.
+  vina_gpu:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+    output_samples: [1]
+
+  proteinmpnn:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+    output_samples: [1]
+
+  esm:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+    output_samples: [1]
+
+  esmfold:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+    output_samples: [1]
+
+  # NOTE: Protenix's implementation processes inputs sequentially.
+  protenix:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 16, 32]
+    output_samples: [1]
+
+  # NOTE: AlphaFold's implementation processes inputs sequentially.
+  alphafold3:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+    output_samples: [1]
+
+  mmseqs2:
+    sample_id: [1n0r_4de1]
+    quality: [medium]
+    input_batch_size: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+    output_samples: [1]

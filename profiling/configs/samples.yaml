@@ -1,0 +1,56 @@
+samples:
+  handpicked:
+    - sample_id: 1shg_3dx1
+      scaffold: 1shg
+      scaffold_lenght: 62
+      ligand: 3dx1
+      ligand_length: 9
+      dataset: handpicked
+    - sample_id: 1shg_4de1
+      scaffold: 1shg
+      scaffold_lenght: 62
+      ligand: 4de1
+      ligand_length: 23
+      dataset: handpicked
+    - sample_id: 1shg_3prs
+      scaffold: 1shg
+      scaffold_lenght: 62
+      ligand: 3prs
+      ligand_length: 50
+      dataset: handpicked
+    - sample_id: 1n0r_3dx1
+      scaffold: 1n0r
+      scaffold_lenght: 126
+      ligand: 3dx1
+      ligand_length: 9
+      dataset: handpicked
+    - sample_id: 1n0r_4de1
+      scaffold: 1n0r
+      scaffold_lenght: 126
+      ligand: 4de1
+      ligand_length: 23
+      dataset: handpicked
+    - sample_id: 1n0r_3prs
+      scaffold: 1n0r
+      scaffold_lenght: 126
+      ligand: 3prs
+      ligand_length: 50
+      dataset: handpicked
+    - sample_id: 1tim_3dx1
+      scaffold: 1tim
+      scaffold_lenght: 247
+      ligand: 3dx1
+      ligand_length: 9
+      dataset: handpicked
+    - sample_id: 1tim_4de1
+      scaffold: 1tim
+      scaffold_lenght: 247
+      ligand: 4de1
+      ligand_length: 23
+      dataset: handpicked
+    - sample_id: 1tim_3prs
+      scaffold: 1tim
+      scaffold_lenght: 247
+      ligand: 3prs
+      ligand_length: 50
+      dataset: handpicked

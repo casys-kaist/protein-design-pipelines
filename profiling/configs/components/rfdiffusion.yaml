@@ -1,0 +1,46 @@
+_target_: profile.components.common.ComponentSpec
+name: rfdiffusion
+templates:
+  CMD:
+    - python3.9
+    - /workspace/third_parties/RFdiffusion/scripts/run_inference.py
+  PARAMS:
+    - inference.output_prefix=${paths.outputs.rfdiffusion}/output/rfdiffusion_out
+    - inference.model_directory_path=${paths.inputs.rfdiffusion_models}
+    - inference.input_pdb={input_pdb}
+    - inference.cautious=false
+    - inference.num_designs={num_designs}
+    - contigmap.contigs={actual_contig}
+    - potentials.guide_scale=1
+    - "potentials.guiding_potentials=[\"type:substrate_contacts,weight:3,s:1,r_0:8,rep_r_0:5,rep_s:2,rep_r_min:1\"]"
+    - potentials.substrate=LIG
+    - diffuser.T={step}
+  PROF_DIR: ${component_raw_root:rfdiffusion}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:rfdiffusion}/{sample_id}/{quality}
+  BASENAME: rfdiffusion_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.rfdiffusion}
+    - mkdir -p ${paths.outputs.rfdiffusion}/output
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.rfdiffusion.build_apply_rules
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+  output:
+    _target_: profile.components.batching.BatchDimension
+    key: output_samples
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: rfdiffusion
+  tag: profiling
+  name_prefix: rfdiffusion-profile
+  runner_entry:
+    - python3.9
+    - -m
+    - profile.cli.run_single_run

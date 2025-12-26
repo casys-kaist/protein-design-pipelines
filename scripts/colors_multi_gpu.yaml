@@ -1,0 +1,24 @@
+# # Color palette specific to fan-out plots.
+# rfdiffusion: "#542657"
+# proteinmpnn: "#373D81"
+# esm-2: "#4B9BAF"
+# mmseqs2: "#6BBF92"
+# protenix: "#9BE58A"
+# vina_gpu: "#F0F278"
+
+# Color palette for multi-GPU utilisation overlays.
+# Yellow for GPU 1 was not clearly visible
+# gpu4: "#542657"
+# gpu3: "#4B9BAF"
+# gpu2: "#9BE58A"
+# gpu1: "#F0F278"
+
+# gpu4: "#542657"
+# gpu3: "#373D81"
+# gpu2: "#4B9BAF"
+# gpu1: "#6BBF92"
+
+gpu4: "#373D81"
+gpu3: "#4B9BAF"
+gpu2: "#6BBF92"
+gpu1: "#B3B3B3"

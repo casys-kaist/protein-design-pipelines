@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[codwz]
+
+# Git
+.git/
+.gitignore
+
+# Else
+*.qdstrm

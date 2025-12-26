@@ -1,0 +1,64 @@
+_target_: profile.components.common.ComponentSpec
+name: diffdock
+templates:
+  CMD:
+    - bash
+    - -c
+    - 'cd /workspace/third_parties/DiffDock && python3 -m inference "$@"'
+    - bash
+  PARAMS:
+    - --out_dir
+    - ${paths.outputs.diffdock}/output
+    - --protein_ligand_csv
+    - ${paths.outputs.diffdock}/inputs/{sample_id}_{quality}_batch.csv
+    - --batch_size
+    - "{batch_size}"
+    - --samples_per_complex
+    - "{samples_per_complex}"
+    - --inference_steps
+    - "{steps}"
+    - --actual_steps
+    - "{steps}"
+  PROF_DIR: ${component_raw_root:diffdock}/{sample_id}/{quality}
+  PROF_DATA_DIR: ${component_raw_root:diffdock}/{sample_id}/{quality}
+  BASENAME: diffdock_{sample_id}_{quality}
+  PREP_COMMANDS:
+    - rm -rf ${paths.outputs.diffdock}/output
+    - rm -rf ${paths.outputs.diffdock}/inputs
+    - mkdir -p ${paths.outputs.diffdock}/output
+    - mkdir -p ${paths.outputs.diffdock}/inputs
+    - >
+      python ${oc.env:PROFILE_REPO_ROOT,/workspace}/profiling/src/profile/components/prep_diffdock_batch.py
+      --csv-path ${paths.outputs.diffdock}/inputs/{sample_id}_{quality}_batch.csv
+      --protein-path {protein_path}
+      --sample-id {sample_id}
+      --ligand-description {ligand_path}
+      --complex-name {sample_id}
+      --count {batch_size}
+  SAMPLE_INTERVAL: 0.1
+  START_INDEX: 1
+apply_rules:
+  _target_: profile.components.diffdock.build_apply_rules
+batching:
+  _target_: profile.components.batching.BatchingConfig
+  input:
+    _target_: profile.components.batching.BatchDimension
+    key: batch_size
+    default: 1
+  output:
+    _target_: profile.components.batching.BatchDimension
+    key: samples_per_complex
+    default: 1
+container:
+  _target_: profile.components.common.ContainerConfig
+  image: diffdock
+  tag: profiling
+  name_prefix: diffdock-profile
+  runner_entry:
+    - micromamba
+    - run
+    - -n
+    - diffdock
+    - python
+    - -m
+    - profile.cli.run_single_run

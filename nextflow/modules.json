@@ -1,0 +1,41 @@
+{
+  "name": "",
+  "homePage": "",
+  "repos": {
+    "https://github.com/nf-core/modules.git": {
+      "modules": {
+        "nf-core": {
+          "aria2": {
+            "branch": "master",
+            "git_sha": "e2684f20ddc22b76879d4d9afdf12180036c6ca0",
+            "installed_by": ["modules"]
+          },
+          "multiqc": {
+            "branch": "master",
+            "git_sha": "471cf3ca1617271b9b6fea09ea2ebdee78b874de",
+            "installed_by": ["modules"]
+          }
+        }
+      },
+      "subworkflows": {
+        "nf-core": {
+          "utils_nextflow_pipeline": {
+            "branch": "master",
+            "git_sha": "05954dab2ff481bcb999f24455da29a5828af08d",
+            "installed_by": ["subworkflows"]
+          },
+          "utils_nfcore_pipeline": {
+            "branch": "master",
+            "git_sha": "05954dab2ff481bcb999f24455da29a5828af08d",
+            "installed_by": ["subworkflows"]
+          },
+          "utils_nfvalidation_plugin": {
+            "branch": "master",
+            "git_sha": "05954dab2ff481bcb999f24455da29a5828af08d",
+            "installed_by": ["subworkflows"]
+          }
+        }
+      }
+    }
+  }
+}

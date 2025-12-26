@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Pipeline samplesheet schema",
+    "description": "Schema for the CSV file provided via params.input",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "sequence": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "sequence must be provided and cannot contain spaces"
+            },
+            "ligand_sdf": {
+                "type": "string",
+                "format": "file-path",
+                "pattern": "^\\S+\\.sdf$",
+                "errorMessage": "ligand_sdf must be a .sdf file path"
+            },
+            "ligand_pdbqt": {
+                "type": "string",
+                "format": "file-path",
+                "pattern": "^\\S+\\.pdbqt$",
+                "errorMessage": "ligand_pdbqt must be a .pdbqt file path"
+            },
+            "docked_pdb": {
+                "type": "string",
+                "format": "file-path",
+                "pattern": "^\\S+\\.pdb$",
+                "errorMessage": "docked_pdb must be a .pdb file path"
+            },
+            "ligand_mol2": {
+                "type": "string",
+                "format": "file-path",
+                "pattern": "^\\S+\\.mol2$",
+                "errorMessage": "ligand_mol2 must be a .mol2 file path"
+            },
+            "contigs": {
+                "type": "string",
+                "description": "RFdiffusion contigs specification (e.g. [5-10/A8-11/...])"
+            },
+            "exhaustiveness": {
+                "type": "integer",
+                "description": "Optional Vina exhaustiveness override"
+            }
+        },
+        "required": [
+            "sequence",
+            "docked_pdb",
+            "ligand_sdf",
+            "ligand_mol2",
+            "contigs"
+        ]
+    }
+}
